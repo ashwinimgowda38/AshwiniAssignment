@@ -1,0 +1,58 @@
+
+.container{
+    border: 1px solid black;
+    padding:30px;
+}
+      
+#accordionExample .btn[aria-expanded=false] span:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f107";
+    float: right;
+   transition: all .5s;
+  }
+  #btn{
+      color: blue;
+  }
+  #accordionExample .btn[aria-expanded=true] span:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f107";
+    float: right;
+    background: #010116;
+    transition: all .5s;
+    -webkit-transform: rotate(180deg);
+      -moz-transform: rotate(180deg);
+      transform: rotate(180deg);
+  }
+  
+  .mw-600 {
+    max-width:600px;
+  }
+  .card{
+      border: none !important;
+      border-top: 1px solid !important;
+      border-radius: 0%;
+  }
+  .card-header{
+    border: none !important;
+    background-color: white !important;
+    border-top: 1px solid black;
+
+  }
+  .card-body{
+      margin-left: 10%;
+      padding-top: 0% !important;
+      font-size: 18px !important;
+  }
+.row{
+margin-left: 29% !important;
+margin-top: 5% !important;
+
+}
+
+body {
+    overflow: hidden;
+}
+ 
+

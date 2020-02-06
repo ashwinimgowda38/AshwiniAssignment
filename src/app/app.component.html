@@ -1,20 +1,38 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+    <div class="row ">
+      <div class="col-md-7">
+        <div class="input-group ">
+          <input type="text" class="form-control" placeholder="Search" (input)="onSearchChange($event.target.value)" (keyup.enter)="searchUser()" id="txtSearch" [(ngModel)]="searchKeyword"/>
+          <div class="input-group-btn">
+            <button class="btn btn-primary" (click)="searchUser()">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+<div *ngIf="dataExist; else noData" class="container my-5 mw-600" id="container">
+    <div class="accordion" id="accordionExample">
+        <ng-container *ngFor="let data of userData">
+            <div class="card">
+                <div class="card-header" [id]="data.email">
+                    <a class="btn btn-link d-flex" data-toggle="collapse" [attr.data-target]="'#' + data.id"
+                        aria-expanded="false" style="color: black;font-weight: bold;font-size: 1.6em;">
+                        {{data.email}}
+                        <!-- <i class="fa fa-chevron-down float-right" aria-hidden="true"></i> -->
+                        <span class="ml-auto fa fa-chevron-down"></span></a>
+                </div>
+                <div [id]="data.id" class="collapse" [attr.aria-labelledby]="data.email"
+                    data-parent="#accordionExample">
+                    <div class="card-body">
+                        <span>First name :  {{data.first_name}}</span><br>
+                        <span>Last name :  {{data.last_name}}</span>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+<ng-template #noData>
+<h3 class="text-md-center mt-3">No data found</h3>
+</ng-template>
